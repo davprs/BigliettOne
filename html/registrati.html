@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Login/Sign up</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+
+</head>
+<body>
+    
+        <header id = "titleNav">
+
+            <div class="header">
+                <span class="menu" onclick="openNav()">
+                    <img src="img/menu.png" alt="Carrello"/>
+                </span>
+                <a class="title" href="index.html">  
+                    <img src="img/title.png" alt="BigliettOne" height="40px" width="100px">
+                </a> 
+                <a class="cartIcon" href="carrello.html">
+                    <img src="img/cart.png" alt="Carrello"/>
+                </a>
+                <a class="notifIcon" href="notifiche.html">
+                    <img src="img/notification.jpg" alt="Notifiche">
+                </a>
+            </div>
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="account.html">Il mio account</a>
+                    <a href="servizio_clienti.html">Servizio Clienti</a>
+                    <a href="contatti.html">Contatti</a>
+                    <a href="info_legali.html">Info Legali</a>
+                </div>
+            </div>
+        </header>
+
+    <main>
+        <h1>Sign up</h1>
+        <form action="#" method="POST">
+                <ul>
+                    <li>
+                        <label for="username">Username:</label><input type="text" id="username" name="username"/>
+                    </li>
+                    <li>
+                        <label for="nome">Nome:</label><input type="text" id="nome" name="nome"/>    
+                    </li>
+                    <li>
+                        <label for="cognome">Cognome:</label><input type="text" id="cognome" name="cognome"/>    
+                    </li>
+                    <li>
+                        <label for="nascita">Data di nascita:</label><input type="text" id="nascita" name="nascita"/>    
+                    </li>
+                    <li>
+                        <label for="password">Password:</label><input type="text" id="password" name="password"/>    
+                    </li>
+                    <li>
+                        <label for="password">Re-inserisci password:</label><input type="text" id="password" name="password"/>    
+                    </li>
+                    <li>
+                        <input type="submit" name="submit" value="Invia" />
+                    </li>
+                </ul>
+        </form>
+  </main>
+    
+</body>
+</html>

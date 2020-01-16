@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Spedizione</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+
+</head>
+<body>
+    
+        <header id = "titleNav">
+            <div class="header">
+                <span class="menu" onclick="openNav()">
+                    <img src="img/menu.png" alt="Carrello"/>
+                </span>
+                <a class="title" href="index.html">  
+                    <img src="img/title.png" alt="BigliettOne" height="40px" width="100px">
+                </a> 
+                <a class="cartIcon" href="carrello.html">
+                    <img src="img/cart.png" alt="Carrello"/>
+                </a>
+                <a class="notifIcon" href="notifiche.html">
+                    <img src="img/notification.jpg" alt="Notifiche">
+                </a>
+            </div>
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="account.html">Il mio account</a>
+                    <a href="servizio_clienti.html">Servizio Clienti</a>
+                    <a href="contatti.html">Contatti</a>
+                    <a href="info_legali.html">Info Legali</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <form action="#" method="POST">
+                <ul>
+                    <li>
+                        <label for="via">Via:</label><input type="text" id="via" name="via"/>    
+                    </li>
+                    <li>
+                        <label for="numeroCivico">Numero civico:</label><input type="text" id="numeroCivico" name="numeroCivico"/>    
+                    </li>
+                    <li>
+                        <label for="citta">Città:</label><input type="text" id="citta" name="citta"/>
+                    </li>
+                    <li>
+                        <label for="cap">CAP:</label><input type="text" id="cap" name="cap"/>    
+                    </li>
+                    <li>
+                        <label for="provincia">Provincia:</label><input type="text" id="provincia" name="provincia"/>    
+                    </li>
+                    <li>
+                        <input type="submit" name="submit" value="Invia" />
+                    </li>
+                </ul>
+        </form>
+        
+    
+        </main>
+    </body>
+    </html>

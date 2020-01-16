@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=B0PuzaJj1O9HKgIQKLgcOrvFeuQJJJ12R6OcIgvUns_t3h3FddFxReWF_VELziGoTuUHljBxYrBShF1rPMksse7BtkdE1uPn-VdMM2CGNJNBXK52XlYN7AgaEQvyHzOX9yaIAe_zDK5i53HFL9c5sT-mxjeSs7-Z0qM0Np3OomflEr91ZFU4LUAscoBjvDKl9c73AgoCXyZTsxk1RnHJtXtSZdwKj3tanJ3KeQXSgAveDvjSxIJR3vFKYs3AdvUljZZ0aTdTEPzmZIG0xMJy7uZZEl8W65mNfjjV_YK-82E_kKKIsV0sUHUcsrGoKHLb3CElEgiHXcVup09oZuMgHg" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://ff.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9kb2MtMG8tMzgtZG9jcy5nb29nbGV1c2VyY29udGVudC5jb20vZG9jcy9zZWN1cmVzYy9lOWV0bmNvNmllOHRsdWI2dmkzY2lkYWxvc25ybmxiaC8xczdrMGE5ZmNzM3JmNmQ5dmVlYjk2czNvOWpuN3BpYi8xNTc4MTM5MjAwMDAwLzExODk4OTg1OTcyMjQzOTY0MjY4LzEzODYyNjk2NTYzMzkzNTQzMzI0LzFmVTVSOHdUclZoTlQtMVhGUTQ1Zjg4aU1VbmRCX2dEOT9lPWRvd25sb2FkJmF1dGh1c2VyPTA"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Home</title>
+    </head>
+    <body>
+        <header id = "titleNav">
+
+            <div class="header">
+                <span class="menu" onclick="openNav()">
+                    <img src="img/menu.png" alt="Carrello"/>
+                </span>
+                <a class="title" href="index.html">  
+                    <img src="img/title.png" alt="BigliettOne" height="40px" width="100px">
+                </a> 
+                <a class="cartIcon" href="carrello.html">
+                    <img src="img/cart.png" alt="Carrello"/>
+                </a>
+                <a class="notifIcon" href="notifiche.html">
+                    <img src="img/notification.jpg" alt="Notifiche">
+                </a>
+            </div>
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="account.html">Il mio account</a>
+                    <a href="servizio_clienti.html">Servizio Clienti</a>
+                    <a href="contatti.html">Contatti</a>
+                    <a href="info_legali.html">Info Legali</a>
+                </div>
+            </div>
+
+            <nav id="navbar">
+                <a class="active" href="index.html">Home</a>
+                <a href="concerti.html">Concerti</a>
+                <a href="sagre.html">Sagre</a>
+                <a href="convegni.html">Convegni</a>
+            </nav>
+    </header>
+
+        <a href="#" class="scrollToTop"><img src="img/go to top.png" /></a>
+        <div class="alert">
+            <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
+        </div>
+
+        <div class="article">
+            <a href="articolo.html"><img src="img/concerto.jpg" alt="future"/></a>
+            <div class="topband"></div>
+            <div class="topleft">ROCK CONCERT</div>
+            <div class="bottomband"></div>
+            <div class="bottomleft">78$</div>
+            <div class="bottomright info"><a href="javascript:void(0)">Info</a></div>
+            <div class="infopanel">L'evento si terrà in viale Giacomo ed Aldo, Milano.<br>Alle ore 21:00.</div>
+        </div>
+
+        <div class="article">
+            <a href="javascript:void(0)"><img src="img/the future 31 12.jpg" alt="future"/></a>
+            <div class="topband"></div>
+            <div class="topleft">The Future</div>
+            <div class="bottomband"></div>
+            <div class="bottomleft">78$</div>
+            <div class="bottomright info"><a href="javascript:void(0)">Info</a></div>
+            <div class="infopanel">L'evento si terrà in viale Giacomo ed Aldo, Milano.<br>Alle ore 21:00.</div>
+        </div>
+
+        <br><br><br><br>
+
+
+        <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+            }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+
+
+            window.onscroll = function() {myFunction()};
+
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky");
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+        </script>
+
+
+    </body>
+</html>

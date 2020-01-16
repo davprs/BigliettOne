@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Notifiche</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+
+</head>
+<body>
+
+        <header id = "titleNav">
+
+            <div class="header">
+                <span class="menu" onclick="openNav()">
+                    <img src="img/menu.png" alt="Carrello"/>
+                </span>
+                <a class="title" href="index.html">  
+                    <img src="img/title.png" alt="BigliettOne" height="40px" width="100px">
+                </a> 
+                <a class="cartIcon" href="carrello.html">
+                    <img src="img/cart.png" alt="Carrello"/>
+                </a>
+                <a class="notifIcon" href="notifiche.html">
+                    <img src="img/notification.jpg" alt="Notifiche">
+                </a>
+            </div>
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <a href="account.html">Il mio account</a>
+                    <a href="servizio_clienti.html">Servizio Clienti</a>
+                    <a href="contatti.html">Contatti</a>
+                    <a href="info_legali.html">Info Legali</a>
+                </div>
+            </div>
+        </header>
+
+    <main>
+        <div class="notification">
+            <table class="history_table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="date">
+                                <div class="date_brick" title="2019-11-29 04:39:26Z">
+                                    Nov
+                                    <br>
+                                    29
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="" title="BigliettOne">
+                                <img class="icon" src="img/icon.png">
+                            </a>
+                        </td>
+                        <td style="color:hotpink; width: 80px;">
+                            New event
+                        </td>
+                        <td>
+                            <a href="articolo.html">
+                                <span style="font-weight: bold; color:cornflowerblue;">
+                                    Out now
+                                </span>
+                                <br>
+                                <span style="color:#444;">
+                                    @User Buy tickets for Rock Concert now!!
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="date">
+                                <div class="date_brick" title="2019-12-14 11:31:46Z">
+                                    Dic
+                                    <br>
+                                    14
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="" title="BigliettOne">
+                                <img class="icon" src="img/icon.png">
+                            </a>
+                        </td>
+                        <td style="color:hotpink; width: 80px;">
+                            Bought
+                        </td>
+                        <td>
+                            <a href="articolo.html">
+                                <span style="font-weight: bold; color:cornflowerblue;">
+                                    Your tickets are ready
+                                </span>
+                                <br>
+                                <span style="color:#444;">
+                                    @User Check your inbox for ticket's pdf
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+</body>
+</html>
