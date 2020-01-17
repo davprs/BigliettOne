@@ -1,17 +1,26 @@
 let cartPage = "Carrello";
 let homePage = "Home";
+let boughtEvents = "My Account";
+let createdEvents = "My Events";
 
 $(document).ready(function(){
     let messages = new MessageQueue();
-    console.log("ciao");
-    if($("title").text() != "Home"){
+    let title = $("title").text();
+    if( title != homePage){
         $.each($(".btnminus"), function(element, value){
             initialManageMinusButton(value);
             console.log(value);
         });
 
+        if(title == boughtEvents){
+            console.log("miei");
+            $("#navbar a:nth-child(1)").addClass("active");
+        } else if(title == createdEvents) {
+            $("#navbar a:nth-child(2)").addClass("active");
+        }
         /*for submenu*/
-        let $el = $("#titleNav, .minimalNavbar");
+        //let $el = $("#titleNav, .minimalNavbar");
+        let $el = $("#article.minimalNavbar");
         let bottom = $el.position().top + $el.outerHeight(true);
         $("main").css("padding-top", bottom + "px");
 
@@ -31,7 +40,7 @@ $(document).ready(function(){
          console.log("ciao");
        });
 
-    console.log($("title").text());
+    console.log($("title").text() == boughtEvents);
     $("#titleNav .header .menu").click(function(){
         $('html, body').css({
             overflow: 'hidden',

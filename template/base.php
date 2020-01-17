@@ -15,8 +15,8 @@
             <?php require($templateParams["content"]); ?>
         </main>
 
-        <br><br><br><br>
-
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <script>
         function openNav() {
