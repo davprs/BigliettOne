@@ -1,3 +1,13 @@
+<?php
+/*if(/*se ci sono notifiche non mostrate 1){
+    if(isset($_COOKIE['notifications'])){
+        setcookie('notifications', $_COOKIE['notifications'].';'."notifica", time() + (86400 * 30), "/");
+    } else {
+        setcookie('notifications', "notifica", time() + (86400 * 30), "/");
+    }
+}*/
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +15,7 @@
     </head>
     <body>
         <?php require($templateParams["navbar"]);?>
-        
+
         <a href="#" class="scrollToTop"><img src="img/go to top.png" /></a>
         <div class="alert"><?php echo $templateParams["alert"];?></div>
         <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->

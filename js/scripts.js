@@ -3,10 +3,49 @@ let homePage = "Home";
 let boughtEvents = "My Account";
 let createdEvents = "My Events";
 
+
 $(document).ready(function(){
     let messages = new MessageQueue();
     let title = $("title").text();
 
+    let notificationReading = setInterval(function(){
+        console.log("checkNotifications");
+        let cookies = getCookies();
+        if(cookies.notifications){
+            let notifications = cookies.notifications.split(';');
+            for(x = 0; x < notifications.length; x++){
+                console.log(notifications[x]);
+                messages.addMessage(notifications[x]);
+            }
+
+            setCookie("notifications", "", 0);
+        }
+        //console.log($.cookie("unreadNotification"));
+    }, 1000 * 10);
+
+    let notificationCheckingAjax = setInterval(function(){
+        let xhttp;
+
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200 && this.responseText) {
+                let cookies = getCookies();
+                if(cookies.notifications){
+                    let notifications = cookies.notifications.split(';');
+                    let notificationsValues = '';
+                    for(x = 0; x < notifications.length; x++){
+                        notificationsValues += notifications[x] + ";";
+                    }
+                    console.log(notificationsValues);
+                    setCookie("notifications", notificationsValues + this.responseText, 30);
+                } else {
+                    setCookie("notifications", this.responseText, 30);
+                }
+            }
+        };
+        xhttp.open("GET", "notifications.php", true);
+        xhttp.send();
+    }, 1000 * 5);
 
     if( title != homePage){
 
@@ -73,8 +112,6 @@ $(document).ready(function(){
     }else {
         $(".info", $(".btnPressed").parent()).html("<a href=\"javascript:void(0)\">Info</a>");
         $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", "18px").css("transition", "font-size 0.3s");
-        messages.addMessage("Reindirizza all' articolo");
-
     }
     $(this).removeClass("btnPressed");
   });
@@ -100,12 +137,6 @@ $(document).ready(function(){
          $('html, body').animate({scrollTop : 0},800);
          return false;
      });
-
-
-  $(".article > a").click(function(){
-      messages.addMessage("Reindirizza all' articolo");
-
-  });
 
   $(".cartArticle .closebtn").click(function(){
       $(this).addClass("btnPressed");
@@ -161,6 +192,23 @@ $(document).ready(function(){
   });*/
 
 });
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+let getCookies = function(){
+    let pairs = document.cookie.split(";");
+    let cookies = {};
+    for (var i=0; i<pairs.length; i++){
+        let pair = pairs[i].split("=");
+        cookies[(pair[0]+'').trim()] = unescape(pair.slice(1).join('='));
+      }
+    return cookies;
+}
 
 evaluateTotal = function(){
     if($("title").text() != cartPage){

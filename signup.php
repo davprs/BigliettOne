@@ -6,6 +6,7 @@ $templateParams["navbar"] = "minimalNavbar.php";
 $templateParams["head"] = "head.php";
 $templateParams["alert"] = "";
 $templateParams["content"] = "template/signup.php";
+
 //$templateParams["article"] = "";
 
 

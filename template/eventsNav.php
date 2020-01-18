@@ -18,10 +18,7 @@
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="overlay-content">
-            <a href="<?php echo ACCOUNT ?>">Il mio account</a>
-            <a href="<?php echo SERVICE ?>">Servizio Clienti</a>
-            <a href="<?php echo CONTACTS ?>">Contatti</a>
-            <a href="<?php echo LEGAL ?>">Info Legali</a>
+            <?php require($templateParams["overlayMenu"]); ?>
         </div>
     </div>
 

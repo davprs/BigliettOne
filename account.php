@@ -13,6 +13,8 @@ if(isset($_COOKIE['user'])){
         $templateParams["alert"] = '';
     }
 
+    $templateParams["overlayMenu"] = "loggedOverlay.php";
+
     $templateParams["content"] = "boughtEvent.php";
 }else{
     $templateParams["title"] = "Login";
@@ -25,6 +27,8 @@ if(isset($_COOKIE['user'])){
     } else {
         $templateParams["alert"] = '';
     }
+
+    $templateParams["overlayMenu"] = "notLoggedOverlay.php";
 
     $templateParams["content"] = "template/login.php";
 }
