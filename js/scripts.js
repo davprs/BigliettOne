@@ -7,8 +7,8 @@ $(document).ready(function(){
     let messages = new MessageQueue();
     let title = $("title").text();
 
-    if( title != homePage){
 
+    if( title != homePage){
 
         $.each($(".btnminus"), function(element, value){
             initialManageMinusButton(value);
@@ -26,15 +26,16 @@ $(document).ready(function(){
             messages.addMessage($(".alert").text());
         }
 
+        if($("title").text() == cartPage){
+            evaluateTotal();
+        }
         /*for submenu*/
         //let $el = $("#titleNav, .minimalNavbar");
         let $el = $("#article.minimalNavbar");
         let bottom = $el.position().top + $el.outerHeight(true);
         $("main").css("padding-top", bottom + "px");
 
-        if($("title").text() == cartPage){
-            evaluateTotal();
-        }
+
     }
 
     $("form ul li input").keyup(function(event) {
@@ -172,10 +173,12 @@ evaluateTotal = function(){
         sum += parseInt($(this).text());
     });
 
+    console.log(sum);
+
     if(sum == 0){
         if($(".cartArticle .priceDialog .price").length == 0){
             $(".totalPrice, .acquista").remove();
-            $("body").append("<img src=\"img/not found icon.png\" class=\"notFound\"/>")
+            $("body main").append("<img src=\"img/not found icon.png\" class=\"notFound\"/>")
             $(".notFound").css({"width": "50%", "display": "block", "margin-left": "auto", "margin-right": "auto"});
         }
     }
