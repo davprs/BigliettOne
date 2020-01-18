@@ -5,11 +5,10 @@
     </head>
     <body>
         <?php require($templateParams["navbar"]);?>
-
+        
         <a href="#" class="scrollToTop"><img src="img/go to top.png" /></a>
-        <div class="alert">
-            <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
-        </div>
+        <div class="alert"><?php echo $templateParams["alert"];?></div>
+        <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
 
         <main>
             <?php require($templateParams["content"]); ?>
@@ -17,8 +16,8 @@
 
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
         <script>
+
         function openNav() {
             document.getElementById("myNav").style.width = "100%";
             }

@@ -12,6 +12,7 @@
    define('CONTACTS', 'contacts.php');
    define('LEGAL', 'info_legali.php');
    define('SIGNUP', 'signup.php');
+   define('ALERT', '');
    require_once("utils/functions.php");
    require_once("db/database.php");
    //$db = new DatabaseHelper(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);

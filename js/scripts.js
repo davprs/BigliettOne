@@ -6,7 +6,10 @@ let createdEvents = "My Events";
 $(document).ready(function(){
     let messages = new MessageQueue();
     let title = $("title").text();
+
     if( title != homePage){
+
+
         $.each($(".btnminus"), function(element, value){
             initialManageMinusButton(value);
             console.log(value);
@@ -18,6 +21,11 @@ $(document).ready(function(){
         } else if(title == createdEvents) {
             $("#navbar a:nth-child(2)").addClass("active");
         }
+
+        if( $(".alert").text() != ''){
+            messages.addMessage($(".alert").text());
+        }
+
         /*for submenu*/
         //let $el = $("#titleNav, .minimalNavbar");
         let $el = $("#article.minimalNavbar");
@@ -75,6 +83,14 @@ $(document).ready(function(){
              $('.scrollToTop').fadeIn();
          } else {
              $('.scrollToTop').fadeOut();
+         }
+     });
+
+     $(".categoryChoise span").click(function(){
+         if($(this).hasClass("categoryChoisePressed")){
+             $(this).removeClass("categoryChoisePressed");
+         } else {
+             $(this).addClass("categoryChoisePressed");
          }
      });
 
@@ -232,7 +248,7 @@ let MessageQueue = function(){
                         if($(".alert").not(":visible") && freeChairs > 0){
                             freeChairs--;
                             console.log("non visibile");
-                            showMessage(textQueue[0] + Math.random() * 100);
+                            showMessage(textQueue[0]);
                             console.log(textQueue.length);
                             if(textQueue.length == 0){
                                 console.log("chiudo");
@@ -258,7 +274,7 @@ let MessageQueue = function(){
 
 
             $(".alert").fadeIn();
-            setTimeout(function(){ $(".alert").hide("slow"); textQueue.shift();},5000);
+            setTimeout(function(){$(".alert").html('');$(".alert").hide("slow"); textQueue.shift();},5000);
         }
     }
 }

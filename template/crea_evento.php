@@ -25,6 +25,14 @@
             <label for="eventDay">Giorno:</label><input type="date" id="eventDay" name="eventDay"/>
         </li>
         <li>
+            <div class="categoryChoise">
+                <span><p>Concerto</p></span>
+                <span><p>Sagre</p></span>
+                <span><p>Convegni</p></span>
+                <span><p>Altro</p></span>
+            </div>
+        </li>
+        <li>
             <span href="login.html" class="button submitButton" onclick="createEvent()"><p>Crea Evento</p></span>
             <!-- <input class="button" type="submit" name="submit" value="Crea evento" /> -->
         </li>
