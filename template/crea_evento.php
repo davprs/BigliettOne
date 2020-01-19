@@ -1,4 +1,4 @@
-<form action="#" method="GET" class="createEvent">
+<form action="event_process.php" method="POST" class="createEvent" enctype="multipart/form-data">
     <ul>
         <li>
             <label for="eventTitle">Titolo:</label><input type="text" id="eventTitle" name="eventTitle"/>
@@ -9,7 +9,7 @@
         </li>
         <li>
             <label for="eventImg" class="eventImg">Carica copertina:</label>
-            <input type="file" id="eventImg" style="display: none;" onchange="fileSelected(this)"/>
+            <input type="file" id="eventImg" style="display: none;" onchange="fileSelected(this)" name ="eventImg"/>
             <input type="button" id="btnAttachment" onclick="openAttachment()" value="Scegli file"/>
         </li>
         <li>
@@ -33,7 +33,7 @@
             </div>
         </li>
         <li>
-            <span href="login.html" class="button submitButton" onclick="createEvent()"><p>Crea Evento</p></span>
+            <span class="button submitButton"><p>Crea Evento</p></span>
             <!-- <input class="button" type="submit" name="submit" value="Crea evento" /> -->
         </li>
     </ul>

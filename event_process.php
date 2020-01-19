@@ -1,29 +1,26 @@
 <?php
 require_once 'config.php';
-
+/*
 if(!isset($_COOKIES["user"])){
     header("location: account.php");
-}
-if($_POST["action"]==1){
+}*/
     //Inserisco
-    $titoloarticolo = $_POST["eventName"];
-    $testoarticolo = $_POST["eventDescription"];
-    $anteprimaarticolo = $_POST["eventPreview"];
-    $dataarticolo = date("Y-m-d");
-    $autore = $_SESSION["idautore"];
+    $eventTitle = $_POST["eventTitle"];
+    $eventDescription = $_POST["eventDescription"];
+    $eventPrice = $_POST["eventPrice"];
+    $eventPlaces = $_POST["eventPlaces"];
+    $eventAddress = $_POST["eventAddress"];
+    $eventDay = $_POST["eventDay"];
+    $autore = $_COOKIE["user"];
+    $thing = $_POST["thing"];
+    $eventCategory = $_POST["category"];
 
-    $categorie = $dbh->getCategories();
-    $categorie_inserite = array();
-    foreach($categorie as $categoria){
-        if(isset($_POST["categoria_".$categoria["idcategoria"]])){
-            array_push($categorie_inserite, $categoria["idcategoria"]);
-        }
-    }
+    echo "<p>".$eventCategory."\n".$eventTitle."\n".$eventDescription."\n".$eventPrice."\n".$eventPlaces."\n".$eventAddress."\n".$eventDay."\n".$autore."\n"."</p>";
 
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["eventImg"]);
     if($result != 0){
         $imgarticolo = $msg;
-        $id = $dbh->insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
+        /*$id = $dbh->insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
         if($id!=false){
             foreach($categorie_inserite as $categoria){
                 $ris = $dbh->insertCategoryOfArticle($id, $categoria);
@@ -32,64 +29,12 @@ if($_POST["action"]==1){
         }
         else{
             $msg = "Errore in inserimento!";
-        }
+        }*/
+        $msg = "Inserimento completato";
 
     }
-    header("location: login.php?formmsg=".$msg);
-}
-if($_POST["action"]==2){
-    //modifico
-    $idarticolo = $_POST["idarticolo"];
-    $titoloarticolo = $_POST["titoloarticolo"];
-    $testoarticolo = $_POST["testoarticolo"];
-    $anteprimaarticolo = $_POST["anteprimaarticolo"];
-    $autore = $_SESSION["idautore"];
+    setcookie("alert", $msg, time() + (86400 * 30), "/");
+    header("location: account.php");
 
-    if(isset($_FILES["imgarticolo"]) && strlen($_FILES["imgarticolo"]["name"])>0){
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["imgarticolo"]);
-        if($result == 0){
-            header("location: login.php?formmsg=".$msg);
-        }
-        $imgarticolo = $msg;
-
-    }
-    else{
-        $imgarticolo = $_POST["oldimg"];
-    }
-    $dbh->updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore);
-
-    $categorie = $dbh->getCategories();
-    $categorie_inserite = array();
-    foreach($categorie as $categoria){
-        if(isset($_POST["categoria_".$categoria["idcategoria"]])){
-            array_push($categorie_inserite, $categoria["idcategoria"]);
-        }
-    }
-    $categorievecchie = explode(",", $_POST["categorie"]);
-
-    $categoriedaeliminare = array_diff($categorievecchie, $categorie_inserite);
-    foreach($categoriedaeliminare as $categoria){
-        $ris = $dbh->deleteCategoryOfArticle($idarticolo, $categoria);
-    }
-    $categoriedainserire = array_diff($categorie_inserite, $categorievecchie);
-    foreach($categoriedainserire as $categoria){
-        $ris = $dbh->insertCategoryOfArticle($idarticolo, $categoria);
-    }
-
-    $msg = "Modifica completata correttamente!";
-    header("location: login.php?formmsg=".$msg);
-}
-
-if($_POST["action"]==3){
-    //cancello
-    echo "entro";
-    $idarticolo = $_POST["idarticolo"];
-    $autore =  $_SESSION["idautore"];
-    $dbh->deleteCategoriesOfArticle($idarticolo);
-    $dbh->deleteArticleOfAuthor($idarticolo, $autore);
-
-    $msg = "Cancellazione completata correttamente!";
-    header("location: login.php?formmsg=".$msg);
-}
 
 ?>

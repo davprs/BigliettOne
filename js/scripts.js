@@ -23,6 +23,27 @@ $(document).ready(function(){
         //console.log($.cookie("unreadNotification"));
     }, 1000 * 10);
 
+    $("#navbar a").click(function(){
+        if( !$(this).hasClass("active")){
+            $("#navbar a").removeClass("active");
+            $(this).addClass("active");
+            let xhttp;
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200 && this.responseText) {
+                    $("main *").remove();
+                    $("main").html(this.responseText);
+                }
+            };
+            console.log($(this).attr('href'));
+            xhttp.open("GET", "getEventsByCategory.php?category=" + $(this).attr('href'), true);
+            xhttp.send();
+        } else {
+            console.log("nulla");
+        }
+    });
+
     let notificationCheckingAjax = setInterval(function(){
         let xhttp;
 
@@ -86,7 +107,13 @@ $(document).ready(function(){
     $('.submitButton').click(function(){
          $("form").submit();
          console.log("ciao");
-       });
+    });
+
+    $('.createEvent').submit(function(eventObj) {
+        $(this).append('<input type="hidden" name="thing" value="someValue">');
+        $(this).append('<input type="hidden" name="category" value="' + $(".categoryChoise span.categoryChoisePressed").text() + '">');
+        return true;
+    });
 
     console.log($("title").text() == boughtEvents);
     $("#titleNav .header .menu").click(function(){

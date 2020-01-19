@@ -12,7 +12,7 @@
         </div>
     </div>
     <p class="description">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
-    <div class="address">Viale Bovio 64 Cesena</div>
+    <div class="address">Via Roma, Cesena</div>
 </div>
 
 <a class="acquista button" href="login.html"><p>Acquista</p></a>

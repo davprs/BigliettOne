@@ -4,6 +4,7 @@
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', '');
    define('DB_DATABASE', 'blogtw');
+   define('UPLOAD_DIR', 'uploads/');
    define('INDEX', 'index.php');
    define('CART', 'cart.php');
    define('NOTIFICATION', 'notification.php');
