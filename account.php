@@ -9,6 +9,7 @@ if(isset($_COOKIE['user'])){
     if(isset($_COOKIE['alert'])){
         $templateParams["alert"] = $_COOKIE['alert'];
         unset($_COOKIE['alert']);
+        setcookie('alert', null, -1, '/');
     } else {
         $templateParams["alert"] = '';
     }
@@ -24,6 +25,7 @@ if(isset($_COOKIE['user'])){
     if(isset($_COOKIE['alert'])){
         $templateParams["alert"] = $_COOKIE['alert'];
         unset($_COOKIE['alert']);
+        setcookie('alert', null, -1, '/');
     } else {
         $templateParams["alert"] = '';
     }

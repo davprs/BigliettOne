@@ -1,4 +1,4 @@
-<div class="content">
+<div class="articleContent">
     <img src="img/concerto.jpg" alt="">
     <div class="imgHUD">
     <span class="map">Apri Mappa</span>
@@ -12,4 +12,4 @@
     <p class="description">Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
     <div class="address">Via Roma, Cesena</div>
 </div>
-<a class="acquista button" href="login.html"><p>Acquista</p></a>
+<a class="acquistaArticle button" href="login.html"><p>Acquista</p></a>

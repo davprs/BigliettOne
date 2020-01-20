@@ -1,6 +1,11 @@
 <div class="content">
     <div class="articlesInCart">
-        <?php //foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
+        <?php require("articlePreview.php");//foreach.. ?>
 
     </div>
 
@@ -11,4 +16,4 @@
 
 </div>
 
-<span href="login.html" class="acquista"><p>Acquista</p></span>
+<span href="#" class="acquista button"><p>Acquista</p></span>

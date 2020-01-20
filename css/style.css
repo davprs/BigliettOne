@@ -709,9 +709,17 @@ form ul li span .button{
     margin-top: 40px;
 }
 
-@media only screen and (max-width: 450px){
+li .register{
+    margin-top: 100px;
+}
+
+@media only screen and (max-width: 550px){
   .article{
     width: 100%;
+  }
+
+  .legal, .contacts{
+      font-size: 12px;
   }
 
   .button{
@@ -724,12 +732,8 @@ form ul li span .button{
   }
   .acquista{
       position: fixed;
-      top: 120px;
-      right: 10%;
-      width: 12%;
-      font-size: 20px;
+      bottom: 25px;
       z-index: 1;
-
   }
 
   .button p{
@@ -810,58 +814,90 @@ form ul li span .button{
 }
 
 
-/* Tablet Styles *//*
-@media only screen and (min-width: 451px) and (max-width: 960px) {
-  .article{
-    width: 50%;
-    float: left;
-  }
+/* Tablet Styles */
+@media only screen and (min-width: 551px) and (max-width: 800px) {
+    *{
+        font-size: 13px;
+    }
 
-  body {
-    margin: 0;
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+    .bottomleft{
+        font-size: 10px;
+    }
 
-  #titleNav{
-      background-color: #f1f1f1;
-      z-index: 1;
-  }
+    .imgHUD .priceDialog{
+        width: 50%;
+    }
 
-  body header div a img{
-    width: 350%;
-  }
+    .imgHUD .priceDialog .price{
+        font-size: 16px;
+    }
 
-  .header {
-    text-align: center;
-    margin-bottom: 5%;
-  }
+    .totalPrice p{
+        font-size: 20px;
+    }
 
-  .header h2{
-      width: 48%;
-  }
+    .totalPrice{
+        position: fixed;
+        right: 0px;
+        padding: 10px;
+        top: 140px;
+    }
 
-  .header a img, .header span img {
-      width: 8%;
-      margin-top: 2%;
-  }
+    .articlesInCart{
+        width: 85%;
+    }
 
-  .header span{
-      margin-right: 18%;
-  }
+    .cartArticle .img{
+        width: 10%;
+    }
 
-  .header a{
-      margin-left: 16%;
-  }
+    .boughtEvent a img , .createdEvent a img{
+        width: 50%;
+    }
 
-  .header span{
-    cursor: pointer;
-  }
+    .customerService{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width: 40%;
+        margin-left: 30%;
+    }
 
-}*/
+    .customerService *{
+        padding: 20px 0;
+    }
 
-/* Desktop Styles */
-@media only screen and (min-width: 455px) {
+    .customerService a{
+        padding: 0px 0 50px 0;
+    }
+
+    .contacts{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width:70%;
+        margin-top: 100px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    .legal{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width:70%;
+        margin-top: 100px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    .login{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width: 40%;
+        margin-left: 30%;
+    }
 
     img.notFound{
         width: 25%;
@@ -912,6 +948,323 @@ form ul li span .button{
     .acquista{
         position: fixed;
         top: 120px;
+        right: 5%;
+        width: 12%;
+        font-size: 20px;
+        z-index: 1;
+    }
+
+    .acquistaArticle{
+        position: fixed;
+        float: right;
+        top: 100px;
+        right: 5%;
+        width: 12%;
+        font-size: 20px;
+        z-index: 1;
+    }
+
+    .button p{
+        display: table-cell;
+        vertical-align: bottom;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: 10%;
+        font-size: 18px;
+        background-color: #8B68FF;
+    }
+
+    main{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .article{
+        display: inline-block;
+      width: 20%;
+      margin: 1% 5% 10% 0%;
+    }
+
+    .infopanel{
+        font-size: 12px;
+    }
+
+    .content img{
+        width: 100%;
+        float: left;
+        display: inline-block;
+    }
+
+    .articleContent img{
+        width: 30%;
+        float: left;
+        display: inline-block;
+    }
+
+    .articleContent .imgHUD{
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+    }
+
+    .articleContent .description{
+        margin-top: 50px;
+        width: 80%;
+    }
+
+    body {
+      margin: 0;
+      font-size: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #navbar a{
+      width: 25%;
+      padding: 14px 0px;
+    }
+
+    #titleNav .eventsNav a{
+      width: 50%;
+    }
+
+    #titleNav{
+      background-color: #f1f1f1;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: left;
+      margin-bottom: 1%;
+    }
+
+    .header h2{
+      width: 48%;
+    }
+
+    .header a img, .header span img {
+      width: 5%;
+    }
+
+    .header span{
+      margin-left: 10px;
+      margin-right: 2%;
+
+    }
+    .header a{
+      margin-left: 5%;
+    }
+
+    .header .title{
+        margin-right: 52%;
+        margin-left: 0%;
+    }
+
+    .header .title img{
+      width: 15%;
+    }
+
+
+    .header span{
+      cursor: pointer;
+    }
+
+/*
+  .article{
+    width: 50%;
+    float: left;
+  }
+
+  body {
+    margin: 0;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  #titleNav{
+      background-color: #f1f1f1;
+      z-index: 1;
+  }
+
+  body header div a img{
+    width: 350%;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  .header h2{
+      width: 48%;
+  }
+
+  .header a img, .header span img {
+      width: 8%;
+      margin-top: 2%;
+  }
+
+  .header span{
+      margin-right: 18%;
+  }
+
+  .header a{
+      margin-left: 16%;
+  }
+
+  .header span{
+    cursor: pointer;
+  }*/
+
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 801px) {
+
+    .articleContent img{
+        width: 30%;
+        float: left;
+        display: inline-block;
+    }
+
+    .articleContent .imgHUD{
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+    }
+
+    .articleContent .description{
+        margin-top: 50px;
+        width: 80%;
+    }
+
+    .imgHUD .priceDialog{
+        width: 50%;
+    }
+
+    .imgHUD .priceDialog .price{
+        font-size: 16px;
+    }
+
+    .totalPrice{
+        position: fixed;
+        right: 10%;
+        padding: 10px;
+        top: 180px;
+    }
+
+    .articlesInCart{
+        width: 80%;
+    }
+
+    .boughtEvent a img , .createdEvent a img{
+        width: 50%;
+    }
+
+    .customerService{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width: 40%;
+        margin-left: 30%;
+    }
+
+    .customerService *{
+        padding: 20px 0;
+    }
+
+    .customerService a{
+        padding: 0px 0 50px 0;
+    }
+
+    .contacts{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width:70%;
+        margin-top: 100px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    .legal{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width:70%;
+        margin-top: 100px;
+        margin-left: 15%;
+        text-align: center;
+    }
+
+    .login{
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px #888888;
+        width: 40%;
+        margin-left: 30%;
+    }
+
+    img.notFound{
+        width: 25%;
+    }
+
+    .overlay{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .overlay a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .overlay a:hover {
+      color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    .button{
+        width: 60%;
+        margin-left: 20%;
+        display: table;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .acquistaArticle{
+        position: fixed;
+        float: right;
+        top: 100px;
+        right: 5%;
+        width: 12%;
+        font-size: 20px;
+        z-index: 1;
+    }
+
+    .acquista{
+        position: fixed;
+        top: 120px;
         right: 10%;
         width: 12%;
         font-size: 20px;
@@ -950,7 +1303,7 @@ form ul li span .button{
     }
 
     .content img{
-        width: 30%;
+        width: 100%;
         float: left;
         display: inline-block;
     }
@@ -958,7 +1311,7 @@ form ul li span .button{
     .content .imgHUD{
         display: inline-block;
         vertical-align: top;
-        width: 30%;
+        width: 50%;
     }
 
     .content .description{

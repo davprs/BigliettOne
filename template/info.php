@@ -1,3 +1,4 @@
+<div class = "legal">
     <h1>La Sua privacy è importante per noi</h1>
     <br>
     <h2>INFORMATIVA SUL TRATTAMENTO DI DATI PERSONALI ai sensi dell’art. 13 del Regolamento UE 2016/679, Regolamento Generale sulla Protezione dei Dati (‘RGPD’) e del D.Lgs. n. 196/2003, Codice in materia di protezione dei dati personali (Codice della Privacy’) </h2>
@@ -20,3 +21,4 @@
         Il trattamento dei dati personali che La riguardano sarà principalmente effettuato con l’ausilio di mezzi elettronici, anche automatizzati, secondo le modalità e con gli strumenti idonei a garantire la sicurezza e la riservatezza dei dati stessi. In particolare, saranno adottate tutte le misure tecniche, informatiche, organizzative, logistiche e procedurali di sicurezza, in modo che sia garantito un livello adeguato di protezione dei dati, come previsto dalla legge, consentendo l’accesso alle sole persone autorizzate al trattamento da parte del Titolare o dei Responsabili designati dal Titolare. <br>
         <br>Le informazioni acquisite e le modalità del trattamento saranno pertinenti e non eccedenti rispetto alla tipologia dei servizi resi.
         <br>I dati saranno altresì gestiti e protetti in ambienti il cui accesso è sotto costante controllo. </h3>
+</div>

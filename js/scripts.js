@@ -2,7 +2,7 @@ let cartPage = "Carrello";
 let homePage = "Home";
 let boughtEvents = "My Account";
 let createdEvents = "My Events";
-let mobileMaxWidth = 450;
+let mobileMaxWidth = 550;
 
 $(document).ready(function(){
     let messages = new MessageQueue();
@@ -21,7 +21,7 @@ $(document).ready(function(){
                 console.log(notifications[x]);
                 messages.addMessage(notifications[x]);
             }
-
+            console.log("settato a zero");
             setCookie("notifications", "", 0);
         }
         //console.log($.cookie("unreadNotification"));
@@ -72,7 +72,39 @@ $(document).ready(function(){
         xhttp.send();
     }, 1000 * 5);
 
+    $(".cartArticle .closebtn").click(function(){
+        console.log("close pressed");
+        $(this).addClass("btnPressed");
+        removeFromCart($(".btnPressed"));
+        $(this).removeClass("btnPressed");
+        evaluateTotal();
+    });
+
+    $(".btnminus").on('click',function(){
+        console.log("btn minus pressed");
+        $(this).addClass("btnPressed");
+        if( ! isDisabled($(".btnPressed")) ){
+            $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1);
+            manageMinusButton($(".btnPressed"));
+            $(".price", $(".btnPressed").parent()).text((parseInt($(".price", $(".btnPressed").parent()).text())/(parseInt($(".quantity", $(".btnPressed").parent()).text()) + 1)) * parseInt($(".quantity", $(".btnPressed").parent()).text()) + "$");
+        }
+        $(this).removeClass("btnPressed");
+        evaluateTotal();
+    });
+
+    $(".btnplus").on('click',function(){
+        console.log("btn plus pressed");
+        $(this).addClass("btnPressed");
+        $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) + 1);
+        $(".price", $(".btnPressed").parent()).text((parseInt($(".price", $(".btnPressed").parent()).text())/(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1)) * parseInt($(".quantity", $(".btnPressed").parent()).text()) + "$");
+        manageMinusButton($(".btnPressed"));
+        $(this).removeClass("btnPressed");
+        evaluateTotal();
+    });
+
     if( title != homePage){
+
+        console.log("sdfghj");
 
         $.each($(".btnminus"), function(element, value){
             initialManageMinusButton(value);
@@ -162,6 +194,7 @@ $(document).ready(function(){
          if($(this).hasClass("categoryChoisePressed")){
              $(this).removeClass("categoryChoisePressed");
          } else {
+             $(".categoryChoise span").removeClass("categoryChoisePressed");
              $(this).addClass("categoryChoisePressed");
          }
      });
@@ -171,33 +204,6 @@ $(document).ready(function(){
          $('html, body').animate({scrollTop : 0},800);
          return false;
      });
-
-  $(".cartArticle .closebtn").click(function(){
-      $(this).addClass("btnPressed");
-      removeFromCart($(".btnPressed"));
-      $(this).removeClass("btnPressed");
-      evaluateTotal();
-  });
-
-  $(".btnminus").on('click',function(){
-      $(this).addClass("btnPressed");
-      if( ! isDisabled($(".btnPressed")) ){
-          $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1);
-          manageMinusButton($(".btnPressed"));
-          $(".price", $(".btnPressed").parent()).text((parseInt($(".price", $(".btnPressed").parent()).text())/(parseInt($(".quantity", $(".btnPressed").parent()).text()) + 1)) * parseInt($(".quantity", $(".btnPressed").parent()).text()) + "$");
-      }
-      $(this).removeClass("btnPressed");
-      evaluateTotal();
-  });
-
-  $(".btnplus").on('click',function(){
-      $(this).addClass("btnPressed");
-      $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) + 1);
-      $(".price", $(".btnPressed").parent()).text((parseInt($(".price", $(".btnPressed").parent()).text())/(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1)) * parseInt($(".quantity", $(".btnPressed").parent()).text()) + "$");
-      manageMinusButton($(".btnPressed"));
-      $(this).removeClass("btnPressed");
-      evaluateTotal();
-  });
 
     $(".map").on('click', function() {
         let address = $(this).html();
@@ -248,7 +254,7 @@ $(window).resize(function(){
         resizeImg(value);
     });
     resizeImg($('main a.article img'));*/
-    $("main div.article a img").each(function(){
+    $("main div.article a img, .cartArticle .img img").each(function(){
         console.log("triggeredIn");
         $(this).attr("height", ($(this).width * 1.3 ));
     });
