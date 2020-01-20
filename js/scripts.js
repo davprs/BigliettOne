@@ -8,6 +8,10 @@ $(document).ready(function(){
     let messages = new MessageQueue();
     let title = $("title").text();
 
+    if($(window).width() > 450){
+        $(".header .menu").attr("onclick", "openNavBig()");
+        $(".overlay").attr("onclick", "closeNavBig()");
+    }
     let notificationReading = setInterval(function(){
         console.log("checkNotifications");
         let cookies = getCookies();
@@ -131,14 +135,17 @@ $(document).ready(function(){
     });
 
   $(".info").click(function(){
+      let fontScaling = 1.7;
       $(this).addClass("btnPressed");
     $(".infopanel", $(".btnPressed").parent()).slideToggle("fast");
     if($(".info", $(".btnPressed").parent()).text() == "Info"){
         $(".info", $(".btnPressed").parent()).html("<a href=\"article.php\">Acquista</a>");
-        $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", "30px").css("transition", "font-size 0.3s");
+        let biggerFont = $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size").split('p')[0] * fontScaling;
+        $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", biggerFont + "px").css("transition", "font-size 0.3s");
     }else {
+        let smallerFont = $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size").split('p')[0] / fontScaling;
         $(".info", $(".btnPressed").parent()).html("<a href=\"javascript:void(0)\">Info</a>");
-        $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", "18px").css("transition", "font-size 0.3s");
+        $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", smallerFont + "px").css("transition", "font-size 0.3s");
     }
     $(this).removeClass("btnPressed");
   });

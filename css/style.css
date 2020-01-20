@@ -519,7 +519,7 @@ header .closebtn {
     float: right;
 }
 
-.button{
+/*.button{
     width: 60%;
     margin-left: 20%;
     display: table;
@@ -543,7 +543,7 @@ header .closebtn {
     padding: 8%;
     font-size: 30px;
     background-color: #8B68FF;
-}
+}*/
 
 .btnPressed{}
 
@@ -781,7 +781,7 @@ form ul li span .button{
 }
 
 
-/* Tablet Styles */
+/* Tablet Styles *//*
 @media only screen and (min-width: 451px) and (max-width: 960px) {
   .article{
     width: 50%;
@@ -829,13 +829,173 @@ form ul li span .button{
     cursor: pointer;
   }
 
-}
+}*/
 
 /* Desktop Styles */
-@media only screen and (min-width: 961px) {
+@media only screen and (min-width: 455px) {
+
+    .overlay{
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0, 0.9);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .overlay a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .overlay a:hover {
+      color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    .button{
+        width: 60%;
+        margin-left: 20%;
+        display: table;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .acquista{
+        position: fixed;
+        top: 120px;
+        right: 10%;
+        width: 12%;
+        font-size: 20px;
+        z-index: 1;
+
+    }
+
+    .button p{
+        display: table-cell;
+        vertical-align: bottom;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: 8%;
+        font-size: 22px;
+        background-color: #8B68FF;
+    }
+
+    main{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .article{
+        display: inline-block;
+      width: 20%;
+      margin: 1% 5% 10% 0%;
+    }
+
+    .infopanel{
+        font-size: 12px;
+    }
+
+    .bottomleft{
+        font-size: 14px;
+    }
+
+    .content img{
+        width: 30%;
+        float: left;
+        display: inline-block;
+    }
+
+    .content .imgHUD{
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+    }
+
+    .content .description{
+        margin-top: 50px;
+        width: 80%;
+    }
+
+    body {
+      margin: 0;
+      font-size: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #navbar a{
+      width: 25%;
+      padding: 14px 0px;
+    }
+
+    #titleNav .eventsNav a{
+      width: 50%;
+    }
+
+    #titleNav{
+      background-color: #f1f1f1;
+      z-index: 1;
+    }
+
+    body header div a img{
+      width: 200%;
+    }
+
+    .header {
+      text-align: left;
+      margin-bottom: 1%;
+    }
+
+    .header h2{
+      width: 48%;
+    }
+
+    .header a img, .header span img {
+      width: 3%;
+    }
+
+    .header span{
+      margin-left: 10px;
+      margin-right: 2%;
+
+    }
+    .header a{
+      margin-left: 5%;
+    }
+
+    .header .title{
+        margin-right: 58%;
+        margin-left: 0%;
+    }
+
+    .header .title img{
+      width: 15%;
+    }
+
+
+    .header span{
+      cursor: pointer;
+    }
+    /*
   .article{
     width: 33.3%;
-    float: left;
+
   }
   header#titleNav nav#navbar a{
     font-size: small;
@@ -884,6 +1044,6 @@ form ul li span .button{
 
   .header span{
     cursor: pointer;
-  }
+  }*/
 
 }

@@ -28,12 +28,20 @@
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <script>
 
-        function openNav() {
+        function openNavMobile() {
             document.getElementById("myNav").style.width = "100%";
             }
 
-        function closeNav() {
+        function closeNavMobile() {
             document.getElementById("myNav").style.width = "0%";
+        }
+
+        function openNavBig() {
+            document.getElementById("myNav").style.width = "20%";
+        }
+
+        function closeNavBig() {
+            document.getElementById("myNav").style.width = "0";
         }
 
 
