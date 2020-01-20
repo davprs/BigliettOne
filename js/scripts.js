@@ -2,13 +2,13 @@ let cartPage = "Carrello";
 let homePage = "Home";
 let boughtEvents = "My Account";
 let createdEvents = "My Events";
-
+let mobileMaxWidth = 450;
 
 $(document).ready(function(){
     let messages = new MessageQueue();
     let title = $("title").text();
 
-    if($(window).width() > 450){
+    if($(window).width() > mobileMaxWidth){
         $(".header .menu").attr("onclick", "openNavBig()");
         $(".overlay").attr("onclick", "closeNavBig()");
     }
@@ -227,6 +227,34 @@ $(document).ready(function(){
 
 });
 
+function resizeImg(img) {
+    img.height = img.width * 1.3;
+    console.log("resizo");
+}
+
+$(window).resize(function(){
+    if($(window).width() > mobileMaxWidth){
+        if($(".header .menu").attr("onclick") != "openNavBig()"){
+            $(".header .menu").attr("onclick", "openNavBig()");
+            $(".overlay").attr("onclick", "closeNavBig()");
+        }
+    } else {
+        if($(".header .menu").attr("onclick") != "openNavMobile()"){
+            $(".header .menu").attr("onclick", "openNavMobile()");
+            $(".overlay").attr("onclick", "closeNavMobile()");
+        }
+    }
+    /*$.each( $('main a.article img'), function( index, value ){
+        resizeImg(value);
+    });
+    resizeImg($('main a.article img'));*/
+    $("main div.article a img").each(function(){
+        console.log("triggeredIn");
+        $(this).attr("height", ($(this).width * 1.3 ));
+    });
+
+});
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -261,7 +289,7 @@ evaluateTotal = function(){
         if($(".cartArticle .priceDialog .price").length == 0){
             $(".totalPrice, .acquista").remove();
             $("body main").append("<img src=\"img/not found icon.png\" class=\"notFound\"/>")
-            $(".notFound").css({"width": "50%", "display": "block", "margin-left": "auto", "margin-right": "auto"});
+            $(".notFound").css({"display": "block", "margin-left": "auto", "margin-right": "auto"});
         }
     }
 

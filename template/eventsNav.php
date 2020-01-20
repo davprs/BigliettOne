@@ -1,7 +1,7 @@
 <header id = "titleNav">
 
     <div class="header">
-        <span class="menu" onclick="openNav()">
+        <span class="menu" onclick="openNavMobile()">
             <img src="img/menu.png" alt="Carrello"/>
         </span>
         <a class="title" href="<?php echo INDEX ?>">
@@ -16,7 +16,7 @@
     </div>
 
     <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNavMobile()">&times;</a>
         <div class="overlay-content">
             <?php require($templateParams["overlayMenu"]); ?>
         </div>

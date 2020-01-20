@@ -1,7 +1,7 @@
 <!-- da aggiornare quando sarà fatto il db -->
 <div class="cartArticle" id="456">
     <a href="javascript:void(0)" class="closebtn">&times;</a>
-    <a href="javascript:void(0)" class="img"><img src="img/concerto.jpg" alt="future"/></a>
+    <a href="javascript:void(0)" class="img"><img src="img/concerto.jpg" alt="future" onload="resizeImg(this)"/></a>
     <div class="title">ROCK CONCERT</div>
     <div class="priceDialog">
         <a href="javascript:void(0)" class="btnminus">-</a>

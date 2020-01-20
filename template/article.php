@@ -1,5 +1,5 @@
 <div class="article">
-    <a href="article.php"><img src="img/concerto.jpg" alt="future"/></a>
+    <a href="article.php"><img src="img/concerto.jpg" alt="future" onload="resizeImg(this)"/></a>
     <div class="topband"></div>
     <div class="topleft">ROCK CONCERT</div>
     <div class="bottomband"></div>

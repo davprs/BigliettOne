@@ -19,10 +19,6 @@ ul{
     z-index: 1;
 }
 
-body header div a img{
-  width: 500%;
-}
-
 .textCentered{
     text-align: center;
 }
@@ -718,6 +714,39 @@ form ul li span .button{
     width: 100%;
   }
 
+  .button{
+      width: 60%;
+      margin-left: 20%;
+      display: table;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+  }
+  .acquista{
+      position: fixed;
+      top: 120px;
+      right: 10%;
+      width: 12%;
+      font-size: 20px;
+      z-index: 1;
+
+  }
+
+  .button p{
+      display: table-cell;
+      vertical-align: bottom;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      padding: 8%;
+      font-size: 22px;
+      background-color: #8B68FF;
+  }
+
+  img.notFound{
+      width: 50%;
+  }
+
   body {
     margin: 0;
     font-size: 18px;
@@ -833,6 +862,10 @@ form ul li span .button{
 
 /* Desktop Styles */
 @media only screen and (min-width: 455px) {
+
+    img.notFound{
+        width: 25%;
+    }
 
     .overlay{
         height: 100%;
