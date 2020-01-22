@@ -21,7 +21,21 @@
         <!--<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
 
         <main>
-            <?php require($templateParams["content"]); ?>
+            <?php if(isset($templateParams["content"])): ?>
+                <?php require($templateParams["content"]); ?>
+            <?php endif ;?>
+
+            <?php if(isset($templateParams["article"])): ?>
+                <?php foreach ($templateParams["article"] as $articolo): ?>
+                    <?php require "articlePage.php"; ?>
+                <?php endforeach;
+            endif; ?>
+
+            <?php if(isset($templateParams["articles"])): ?>
+                <?php foreach ($templateParams["articles"] as $articolo): ?>
+                    <?php require "article.php"; ?>
+                <?php endforeach;
+            endif; ?>
         </main>
 
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

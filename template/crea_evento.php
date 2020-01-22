@@ -27,8 +27,8 @@
         <li>
             <div class="categoryChoise">
                 <span><p>Concerto</p></span>
-                <span><p>Sagre</p></span>
-                <span><p>Convegni</p></span>
+                <span><p>Sagra</p></span>
+                <span><p>Convegno</p></span>
                 <span><p>Altro</p></span>
             </div>
         </li>

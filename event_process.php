@@ -20,18 +20,13 @@ if(!isset($_COOKIES["user"])){
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["eventImg"]);
     if($result != 0){
         $imgarticolo = $msg;
-        /*$id = $dbh->insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
+        $id = $dbh->insertArticle($eventTitle, $autore, $eventAddress, $eventCategory, $imgarticolo);
         if($id!=false){
-            foreach($categorie_inserite as $categoria){
-                $ris = $dbh->insertCategoryOfArticle($id, $categoria);
-            }
             $msg = "Inserimento completato correttamente!";
         }
         else{
             $msg = "Errore in inserimento!";
-        }*/
-        $msg = "Inserimento completato";
-
+        }
     }
     setcookie("alert", $msg, time() + (86400 * 30), "/");
     header("location: account.php");

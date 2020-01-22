@@ -65,6 +65,12 @@ function uploadImage($path, $image){
         $msg .= "Accettate solo le seguenti estensioni: ".implode(",", $acceptedExtensions);
     }
 
+/*    //Check img proportions
+    list($width, $height, $type, $attr) = getimagesize($image["name"]);
+    if (intval($height) < (intval($width) * 1.3) && intval($height) > (intval($width) * 1.8)) {
+        $msg .= "File caricato ha proporzioni non ottimali";
+    }
+*/
     //Controllo se esiste file con stesso nome ed eventualmente lo rinomino
     if (file_exists($fullPath)) {
         $i = 1;

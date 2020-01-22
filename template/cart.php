@@ -1,11 +1,8 @@
 <div class="content">
     <div class="articlesInCart">
-        <?php require("articlePreview.php");//foreach.. ?>
-        <?php require("articlePreview.php");//foreach.. ?>
-        <?php require("articlePreview.php");//foreach.. ?>
-        <?php require("articlePreview.php");//foreach.. ?>
-        <?php require("articlePreview.php");//foreach.. ?>
-        <?php require("articlePreview.php");//foreach.. ?>
+        <?php foreach ($templateParams["articlesInCart"] as $articolo): ?>
+            <?php require "articlePreview.php"; ?>
+        <?php endforeach; ?>
 
     </div>
 

@@ -260,7 +260,8 @@ img{
   position: fixed;
   left: 0;
   top: 0;
-  width: 95%;
+  width: 96%;
+  margin-left: 2%;
   height: 30px;
   z-index: 1;
   white-space:nowrap;
@@ -905,7 +906,6 @@ li .register{
 
     .overlay{
         height: 100%;
-        width: 0;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -983,7 +983,7 @@ li .register{
     .article{
         display: inline-block;
       width: 20%;
-      margin: 1% 5% 10% 0%;
+      margin: 1% 2% 10% 2%;
     }
 
     .infopanel{
@@ -998,6 +998,7 @@ li .register{
 
     .articleContent img{
         width: 30%;
+        padding: 10px;
         float: left;
         display: inline-block;
     }
@@ -1124,6 +1125,7 @@ li .register{
     .articleContent img{
         width: 30%;
         float: left;
+        padding: 10px;
         display: inline-block;
     }
 
@@ -1291,7 +1293,7 @@ li .register{
     .article{
         display: inline-block;
       width: 20%;
-      margin: 1% 5% 10% 0%;
+      margin: 1% 2% 10% 2%;
     }
 
     .infopanel{

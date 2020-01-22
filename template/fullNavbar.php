@@ -22,5 +22,5 @@
         </div>
     </div>
 
-    <nav id="navbar"><a class="active" href="#home">Home</a><a href="#concerti">Concerti</a><a href="#sagre">Sagre</a><a href="#convegni">Convegni</a></nav>
+    <nav id="navbar"><a class="active" href="#home">Home</a><a href="#concerto">Concerti</a><a href="#sagra">Sagre</a><a href="#convegno">Convegni</a></nav>
 </header>

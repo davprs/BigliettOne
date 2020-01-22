@@ -1,5 +1,6 @@
 <?php
    session_start();
+   require_once("db/db_connect.php");
    define('DB_SERVER', 'localhost');  //host's ip
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', '');

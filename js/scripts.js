@@ -38,10 +38,13 @@ $(document).ready(function(){
                 if (this.readyState == 4 && this.status == 200 && this.responseText) {
                     $("main *").remove();
                     $("main").html(this.responseText);
+                    console.log(this.responseText);
                 }
             };
             console.log($(this).attr('href'));
-            xhttp.open("GET", "getEventsByCategory.php?category=" + $(this).attr('href'), true);
+            let category = $(this).attr('href').split('#')[1];
+            if(category == "home"){ category = "*"; }
+            xhttp.open("GET", "getEventsByCategory.php?category=" + category, true);
             xhttp.send();
         } else {
             console.log("nulla");
@@ -142,13 +145,40 @@ $(document).ready(function(){
 
     $('.submitButton').click(function(){
          $("form").submit();
-         console.log("ciao");
     });
 
-    $('.createEvent').submit(function(eventObj) {
-        $(this).append('<input type="hidden" name="thing" value="someValue">');
-        $(this).append('<input type="hidden" name="category" value="' + $(".categoryChoise span.categoryChoisePressed").text() + '">');
-        return true;
+    $('.createEvent').submit(function() {
+        let now = new Date();
+        console.log("ou");
+
+        if($('#eventTitle').val().length > 15){
+            messages.addMessage("titolo dev' essere minore di 15 caratteri");
+            return false;
+        } else if($('#eventTitle').val().length == 0){
+            messages.addMessage("titolo non può essere vuoto");
+            return false;
+        } else if($('#eventDescription').val().length > 400){
+            messages.addMessage("descrizione dev' essere minore di 400 caratteri");
+            return false;
+        } else if($('#eventDescription').val().length == 0){
+            messages.addMessage("descrizione non può essere vuota");
+            return false;
+        } else if($('#eventPrice').val() == ''){
+            messages.addMessage("prezzo non può essere vuoto");
+            return false;
+        } else if($('#eventPlaces').val() == ''){
+            messages.addMessage("vanno indicati i posti");
+            return false;
+        } else if($('.eventAddress').val() == 0){
+            messages.addMessage("indirizzo non può essere vuoto");
+            return false;
+        } else if($('.categoryChoisePressed').length == 0){
+            messages.addMessage("scegliere una categoria");
+            return false;
+        } else {    //date control missing
+            $(this).append('<input type="hidden" name="category" value="' + $(".categoryChoise span.categoryChoisePressed").text().toLowerCase() + '">');
+            return true;
+        }
     });
 
     console.log($("title").text() == boughtEvents);
@@ -239,6 +269,11 @@ function resizeImg(img) {
 }
 
 $(window).resize(function(){
+    $("main div.article a img, .cartArticle .img img").css("height", $("main div.article a img, .cartArticle .img img").css("width").split("p")[0] * 1.3 + "px");
+
+});
+
+$(window).resize(function(){
     if($(window).width() > mobileMaxWidth){
         if($(".header .menu").attr("onclick") != "openNavBig()"){
             $(".header .menu").attr("onclick", "openNavBig()");
@@ -250,15 +285,6 @@ $(window).resize(function(){
             $(".overlay").attr("onclick", "closeNavMobile()");
         }
     }
-    /*$.each( $('main a.article img'), function( index, value ){
-        resizeImg(value);
-    });
-    resizeImg($('main a.article img'));*/
-    $("main div.article a img, .cartArticle .img img").each(function(){
-        console.log("triggeredIn");
-        $(this).attr("height", ($(this).width * 1.3 ));
-    });
-
 });
 
 function setCookie(cname, cvalue, exdays) {
