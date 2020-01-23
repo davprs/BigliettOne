@@ -105,6 +105,12 @@ $(document).ready(function(){
         evaluateTotal();
     });
 
+    $(".acquistaArticle").click(function(){
+        $(this).attr("href", $(".acquistaArticle").attr("href") + $(".quantity").text() );
+
+    });
+
+
     if( title != homePage){
 
         console.log("sdfghj");

@@ -1,10 +1,12 @@
 <?php
 require_once 'config.php';
 
-$id = $_GET["id"];
+$articleId = $_GET["id"];
+$quantity = $_GET["qty"];
 if(isset($_COOKIE["user"])){
     //richiesta al db dell id del carrello dell utente
-    $dbh->addEventInCart(1, $id);
+    $cart = $dbh->getCartByUsername($_COOKIE["user"])[0];
+    $dbh->addEventInCart($cart["carrello"], $articleId, $quantity);
     header("location: ../cart.php");
 } else {
     header("location: ../account.php");

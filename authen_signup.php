@@ -26,7 +26,9 @@
                 header("Location: ./signup.php");
             }
         } else{
-            $result = $dbh->signUp($username, $password, $name, $surname, $birthday);
+            $result = $dbh->createCart();
+            echo $result;
+            $result = $dbh->signUp($username, $password, $name, $surname, $birthday, $result);
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
             setcookie('alert', 'Benvenuto a bordo '.$username.'!', time() + 5);
             header("Location: ./account.php");

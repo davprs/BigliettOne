@@ -6,12 +6,14 @@ $templateParams["navbar"] = "simpleNavbar.php";
 $templateParams["head"] = "head.php";
 $templateParams["alert"] = "";
 $templateParams["content"] = "cart.php";
-$templateParams["articlesInCart"] = $dbh->getCartElementsOf(1);
 
 if(isset($_COOKIE['user'])){
+    $cart = $dbh->getCartByUsername($_COOKIE["user"]);
+    $articles = $dbh->getCartElementsOf($cart[0]["carrello"]);
+    $templateParams["articlesInCart"] = $articles;
     $templateParams["overlayMenu"] = "loggedOverlay.php";
 } else {
-    $templateParams["overlayMenu"] = "notLoggedOverlay.php";
+    header("Location: ./account.php");
 }
 
 require 'template/base.php';

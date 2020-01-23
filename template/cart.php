@@ -1,8 +1,10 @@
 <div class="content">
     <div class="articlesInCart">
         <?php foreach ($templateParams["articlesInCart"] as $articolo): ?>
-            <?php require "articlePreview.php"; ?>
-        <?php endforeach; ?>
+            <?php if(! is_null($articolo["id_articolo"])): ?>
+                <?php require "articlePreview.php"; ?>
+        <?php endif;
+    endforeach; ?>
 
     </div>
 

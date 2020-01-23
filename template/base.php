@@ -36,6 +36,7 @@
                     <?php require "article.php"; ?>
                 <?php endforeach;
             endif; ?>
+
         </main>
 
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
