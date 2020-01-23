@@ -7,7 +7,7 @@ if(isset($_COOKIE['user'])){
     $templateParams["head"] = "head.php";
     $templateParams["alert"] = "";
     $templateParams["overlayMenu"] = "loggedOverlay.php";
-    $templateParams["content"] = "createdEvent.php";
+    $templateParams["createdEvent"] = $dbh->getEventsByUser($_COOKIE['user']);
 } else {
     $templateParams["title"] = "Login";
     $templateParams["navbar"] = "minimalNavbar.php";

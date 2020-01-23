@@ -37,10 +37,27 @@
                 <?php endforeach;
             endif; ?>
 
+            <?php if(isset($templateParams["notification"])): ?>
+                <?php foreach ($templateParams["notification"] as $notification): ?>
+                    <?php require "notification.php"; ?>
+                <?php endforeach;
+            endif; ?>
+
+            <?php if(isset($templateParams["createdEvent"])): ?>
+                <?php foreach ($templateParams["createdEvent"] as $event): ?>
+                    <?php require "createdEvent.php"; ?>
+                <?php endforeach;
+            endif; ?>
+
+            <?php if(isset($templateParams["boughtEvent"])): ?>
+                <?php foreach ($templateParams["boughtEvent"] as $event): ?>
+                    <?php require "boughtEvent.php"; ?>
+                <?php endforeach;
+            endif; ?>
+
         </main>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br/>
         <script>
 
         function openNavMobile() {

@@ -15,4 +15,4 @@
 
 </div>
 
-<span href="#" class="acquista button"><p>Acquista</p></span>
+<span class="acquista button"><p><a href="buy.php?id=<?php print_r($templateParams["articlesInCart"][0]["id_carrello2"]); ?>">Acquista</a></p></span>

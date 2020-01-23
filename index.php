@@ -7,7 +7,7 @@ if(isset($_COOKIE['user'])){
     $templateParams["head"] = "head.php";
     $templateParams["alert"] = "";
     $templateParams["overlayMenu"] = "loggedOverlay.php";
-    $templateParams["articles"] = $dbh->getPosts(8);
+    $templateParams["articles"] = $dbh->getPosts(20);
     //$templateParams["article"] = "";
 } else {
     $templateParams["title"] = "Home";
@@ -15,7 +15,7 @@ if(isset($_COOKIE['user'])){
     $templateParams["head"] = "head.php";
     $templateParams["alert"] = "";
     $templateParams["overlayMenu"] = "notLoggedOverlay.php";
-    $templateParams["articles"] = $dbh->getPosts(8);
+    $templateParams["articles"] = $dbh->getPosts(20);
 }
 /*
 if(/*se ci sono notifiche non mostrate 1){

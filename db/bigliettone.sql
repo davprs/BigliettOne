@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Gen 22, 2020 alle 17:48
+-- Creato il: Gen 23, 2020 alle 21:23
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.1
 
@@ -90,10 +90,12 @@ CREATE TABLE `indirizzo` (
 
 CREATE TABLE `notifiche` (
   `id_notifica` int(10) NOT NULL,
+  `id_utente` int(11) NOT NULL,
   `id_articolo` int(20) NOT NULL,
+  `tipo` varchar(20) NOT NULL,
   `contenuto` text NOT NULL,
   `mostrato` tinyint(1) NOT NULL,
-  `immagine` varchar(50) DEFAULT NULL
+  `immagine` varchar(50) DEFAULT 'icon.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -149,7 +151,8 @@ ALTER TABLE `indirizzo`
 --
 ALTER TABLE `notifiche`
   ADD PRIMARY KEY (`id_notifica`),
-  ADD KEY `id_articolo` (`id_articolo`);
+  ADD KEY `id_articolo` (`id_articolo`),
+  ADD KEY `id_utente` (`id_utente`);
 
 --
 -- Indici per le tabelle `user_login`
@@ -225,7 +228,8 @@ ALTER TABLE `carrello`
 -- Limiti per la tabella `notifiche`
 --
 ALTER TABLE `notifiche`
-  ADD CONSTRAINT `notifiche_ibfk_1` FOREIGN KEY (`id_articolo`) REFERENCES `articolo` (`id_articolo`);
+  ADD CONSTRAINT `notifiche_ibfk_1` FOREIGN KEY (`id_articolo`) REFERENCES `articolo` (`id_articolo`),
+  ADD CONSTRAINT `notifiche_ibfk_2` FOREIGN KEY (`id_utente`) REFERENCES `user_login` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

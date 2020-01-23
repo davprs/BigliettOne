@@ -10,6 +10,14 @@ a{
     text-decoration: none;
 }
 
+.acquista a{
+    color: white;
+}
+
+.map a{
+    color: black;
+}
+
 ul{
     padding: 0;
 }

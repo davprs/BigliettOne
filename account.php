@@ -16,7 +16,7 @@ if(isset($_COOKIE['user'])){
 
     $templateParams["overlayMenu"] = "loggedOverlay.php";
 
-    $templateParams["content"] = "boughtEvent.php";
+    $templateParams["boughtEvent"] = $dbh->getBoughtEvents($_COOKIE['user']);
 }else{
     $templateParams["title"] = "Login";
     $templateParams["navbar"] = "minimalNavbar.php";

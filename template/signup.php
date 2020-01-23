@@ -1,4 +1,4 @@
-<form action="authen_signup.php" method="POST">
+<form action="authen_signup.php" class="signup" method="POST">
         <ul>
             <li>
                 <label for="username">Username:</label><input type="text" id="username" name="username"/>
@@ -13,10 +13,10 @@
                 <label for="nascita">Data di nascita:</label><input type="date" id="nascita" name="nascita"/>
             </li>
             <li>
-                <label for="password">Password:</label><input type="password" id="password" name="password"/>
+                <label for="password">Password:</label><input type="password" id="password1" name="password"/>
             </li>
             <li>
-                <label for="password2">Re-inserisci password:</label><input type="password" id="password" name="password2"/>
+                <label for="password2">Re-inserisci password:</label><input type="password" id="password2" name="password2"/>
             </li>
             <li>
                 <span href="#" class="button submitButton"><p>Registrati</p></span>

@@ -5,9 +5,10 @@ $templateParams["title"] = "Home";
 $templateParams["navbar"] = "fullNavbar.php";
 $templateParams["head"] = "head.php";
 $templateParams["alert"] = "";
-$templateParams["content"] = "notification.php";
 
 if(isset($_COOKIE['user'])){
+    $id= $dbh->getUserId($_COOKIE['user']);
+    $templateParams["notification"] = $dbh->getNotification($id["id"]);
     $templateParams["overlayMenu"] = "loggedOverlay.php";
 } else {
     $templateParams["overlayMenu"] = "notLoggedOverlay.php";

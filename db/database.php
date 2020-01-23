@@ -10,6 +10,57 @@ class DatabaseHelper{
         }
     }
 
+    public function getEventsByUser($username){
+        $query = "SELECT id_articolo, nome, data, immagine, prezzo, luogo FROM articolo WHERE autore = ?"; //WHERE data > dataoggi  && data
+        $stmt = $this->db->prepare($query);
+        $id_user = $this->getUserId($username);
+        $stmt->bind_param('i', $id_user["id"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getBoughtEvents($username){
+        $query = "SELECT articolo, quantita FROM acquisto WHERE utente = ?"; //WHERE data > dataoggi  && data
+        $stmt = $this->db->prepare($query);
+        $id_user = $this->getUserId($username);
+        $stmt->bind_param('i', $id_user["id"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotification($id_user){
+        $query = "SELECT contenuto, immagine, tipo, id_articolo FROM notifiche WHERE id_utente = ?"; //WHERE data > dataoggi  && data
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id_user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $query = "UPDATE `notifiche` SET `mostrato` = 1 WHERE `id_utente` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id_user);
+        $stmt->execute();
+
+        return $result->fetch_all(MYSQLI_ASSOC);;
+    }
+
+    public function readNotification($id_user){
+        $query = "SELECT contenuto, immagine, id_articolo FROM notifiche WHERE id_utente = ? AND mostrato = 0"; //WHERE data > dataoggi  && data
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id_user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $res = $result->fetch_all(MYSQLI_ASSOC);
+
+        $query = "UPDATE `notifiche` SET `mostrato` = 1 WHERE `id_utente` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id_user);
+        $stmt->execute();
+
+        return $res;
+    }
+
     public function removeOneArticle($id_event, $id_cart){
         $query = "SELECT quantita FROM carrello WHERE id_carrello2 = ? AND id_articolo = ?"; //WHERE data > dataoggi  && data
         $stmt = $this->db->prepare($query);
@@ -57,6 +108,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUserId($username){
+        $stmt = $this->db->prepare("SELECT `id` FROM user_login WHERE username = ? LIMIT 1");
+        $stmt->bind_param('s',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
     public function getQuantity($cartId, $articleId){
         $stmt = $this->db->prepare("SELECT quantita FROM carrello WHERE id_carrello2 = ? AND id_articolo = ? ");
         $stmt->bind_param('ss',$cartId, $articleId);
@@ -66,8 +125,25 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function buyCart($cart_id, $id_user){
+        $cartElements = $this->getCartElementsOf($cart_id);
+        foreach ($cartElements as $element) {
+            $query = "INSERT INTO acquisto (articolo, quantita, utente) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iii', $element["id_articolo"], $element["quantita"], $id_user);
+            $stmt->execute();
+            $stmt->insert_id;
+        }
+
+        $query = "DELETE FROM carrello WHERE id_carrello2 = ? AND id_articolo IS NOT NULL";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $cart_id);
+        $stmt->execute();
+
+    }
+
     public function getCartElementsOf($id){
-        $stmt = $this->db->prepare("SELECT id_articolo FROM carrello WHERE id_carrello2 = ? AND id_articolo IS NOT NULL ");
+        $stmt = $this->db->prepare("SELECT id_carrello2, id_articolo, quantita FROM carrello WHERE id_carrello2 = ? AND id_articolo IS NOT NULL ");
         $stmt->bind_param('i',$id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -114,7 +190,7 @@ class DatabaseHelper{
     }
 
     public function getArticle($id){
-        $query = "SELECT id_articolo, nome, descrizione, prezzo, autore, luogo, immagine FROM articolo WHERE id_articolo = ? ORDER BY id_articolo DESC"; //WHERE data > dataoggi  && data
+        $query = "SELECT id_articolo, nome, descrizione, prezzo, autore, luogo, data, immagine FROM articolo WHERE id_articolo = ? ORDER BY id_articolo DESC"; //WHERE data > dataoggi  && data
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$id);
         $stmt->execute();
@@ -123,14 +199,26 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function insertPlace($via, $civ, $cap, $cit, $stat){
+        $query = "INSERT INTO indirizzo (via, civico, CAP, citta, stato) VALUES (?, ?, ?, ?, ?)";
+        //$query = "INSERT INTO articolo (nome, autore, luogo) VALUES (?, ?, 1)";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssss',$via, $civ, $cap, $cit, $stat);
+        $stmt->execute();
+
+        return $stmt->insert_id;
+    }
+
     public function insertArticle($titoloarticolo, $autore, $luogo, $data, $tipo, $imgarticolo, $descrzione, $descrizione_breve, $prezzo){
-        $query = "INSERT INTO articolo (nome, autore, luogo, data, tipo, immagine, prezzo, descrizione, descrizione_breve) VALUES (?, ?, 2, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO articolo (nome, autore, luogo, data, tipo, immagine, prezzo, descrizione, descrizione_breve) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         //$query = "INSERT INTO articolo (nome, autore, luogo) VALUES (?, ?, 1)";
 
         $date_field = date('Y-m-d',strtotime($data));
 
+        $id_user = $this->getUserId($autore)["id"];
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssiss',$titoloarticolo, $autore, $date_field, $tipo, $imgarticolo, $prezzo, $descrzione, $descrizione_breve);
+        $stmt->bind_param('ssisssiss',$titoloarticolo, $id_user, $luogo, $date_field, $tipo, $imgarticolo, $prezzo, $descrzione, $descrizione_breve);
         $stmt->execute();
 
         return $stmt->insert_id;

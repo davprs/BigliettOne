@@ -1,6 +1,7 @@
 <?php
     $luogo = $dbh->getAddress($articolo["luogo"])[0];
-    $luogoStr = $luogo["via"]." ".$luogo["civico"]." ". $luogo["citta"];
+    //$googlePath = "https://www.google.com/maps?q=via+".$luogo["via"].",+".$luogo["civico"].",+". $luogo["citta"];
+    $luogoStr = "via ".$luogo["via"].", ".$luogo["civico"].", ". $luogo["citta"];
  ?>
 
 <div class="articleContent" id="<?php echo $articolo["id_articolo"]; ?>">

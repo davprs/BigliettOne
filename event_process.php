@@ -14,14 +14,28 @@ if(!isset($_COOKIES["user"])){
     $autore = $_COOKIE["user"];
     $eventCategory = $_POST["category"];
 
-    echo "<p>".$eventCategory."\n".$eventTitle."\n".$eventDescription."\n".$eventPrice."\n".$eventPlaces."\n".$eventAddress."\n".$eventDay."\n".$autore."\n"."</p>";
+    $via = $_POST["via"];
+    $civ = $_POST["civ"];
+    $cap = $_POST["cap"];
+    $cit = $_POST["cit"];
+    $stat = $_POST["stat"];
+
+    /*$via = "roma";
+    $civ = "55";
+    $cap = "65010";
+    $cit = "montesilvano";
+    $stat = "italia";*/
+
+    echo $via.$civ.$cap.$cit.$stat;
+
 
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["eventImg"]);
     if($result != 0){
-        echo "ciao";
+        $place = $dbh->insertPlace($via, $civ, $cap, $cit, $stat);
+        echo $place;
         $imgarticolo = $msg;
-        $descrizione_breve = "L'evento si terrà in ".$eventPlaces." il ".$eventDay;
-        $id = $dbh->insertArticle($eventTitle, $autore, 1, $eventDay, $eventCategory, $imgarticolo, $eventDescription, $descrizione_breve, $eventPrice);
+        $descrizione_breve = "L'evento si terrà a ".$cit." il ".$eventDay;
+        $id = $dbh->insertArticle($eventTitle, $autore, $place, $eventDay, $eventCategory, $imgarticolo, $eventDescription, $descrizione_breve, $eventPrice);
         if($id!=false){
             $msg = "Inserimento completato correttamente!";
         }

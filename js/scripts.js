@@ -12,18 +12,23 @@ $(document).ready(function(){
         $(".header .menu").attr("onclick", "openNavBig()");
         $(".overlay").attr("onclick", "closeNavBig()");
     }
+
     let notificationReading = setInterval(function(){
         console.log("checkNotifications");
         let cookies = getCookies();
-        if(cookies.notifications){
-            let notifications = cookies.notifications.split(';');
-            for(x = 0; x < notifications.length; x++){
+
+        let notifications = cookies.notifications.split(';');
+        for(x = 0; x < notifications.length; x++){
                 console.log(notifications[x]);
-                messages.addMessage(notifications[x]);
-            }
-            console.log("settato a zero");
-            setCookie("notifications", "", 0);
+                if(notifications[x] == "nulla"){
+                    console.log("tolgo");
+                    setCookie("notifications", "", null);
+                } else {
+                    messages.addMessage(notifications[x]);
+                }
+            setCookie("notifications", "", null);
         }
+        console.log("settato a zero");
         //console.log($.cookie("unreadNotification"));
     }, 1000 * 10);
 
@@ -54,25 +59,34 @@ $(document).ready(function(){
     let notificationCheckingAjax = setInterval(function(){
         let xhttp;
 
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200 && this.responseText) {
-                let cookies = getCookies();
-                if(cookies.notifications){
-                    let notifications = cookies.notifications.split(';');
-                    let notificationsValues = '';
-                    for(x = 0; x < notifications.length; x++){
-                        notificationsValues += notifications[x] + ";";
+        if(getCookies().user){
+            console.log("checking via AJAX " + getCookies().user);
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200 && this.responseText) {
+                    let cookies = getCookies();
+                    if(cookies.notifications){
+                        let notifications = cookies.notifications.split(';');
+                        let notificationsValues = '';
+                        for(x = 0; x < notifications.length; x++){
+                            if(notificationsValues.textContent != 0){
+                                notificationsValues += notifications[x] + ";";
+                            }
+                        }
+                        console.log(notificationsValues);
+                        setCookie("notifications", notificationsValues + this.responseText, 30);
+                    } else {
+                        if(this.responseText.textContent != 'undefined'){
+                            console.log(this.responseText);
+                            setCookie("notifications", this.responseText, 30);
+                        }
                     }
-                    console.log(notificationsValues);
-                    setCookie("notifications", notificationsValues + this.responseText, 30);
-                } else {
-                    setCookie("notifications", this.responseText, 30);
                 }
-            }
-        };
-        xhttp.open("GET", "notifications.php", true);
-        xhttp.send();
+            };
+            xhttp.open("GET", "notifications.php", true);
+            xhttp.send();
+        }
     }, 1000 * 5);
 
     $(".cartArticle .closebtn").click(function(){
@@ -113,8 +127,6 @@ $(document).ready(function(){
 
     if( title != homePage){
 
-        console.log("sdfghj");
-
         $.each($(".btnminus"), function(element, value){
             initialManageMinusButton(value);
             console.log(value);
@@ -153,6 +165,45 @@ $(document).ready(function(){
          $("form").submit();
     });
 
+    $('.signup').submit(function() {
+        if($('#username').val().length > 20){
+            messages.addMessage("username dev' essere minore di 20 caratteri");
+            return false;
+        } else if($('#username').val().length < 6){
+            messages.addMessage("username deve contenere almeno 6 caratteri");
+            return false;
+        } else if($('#password1').val().length > 30){
+            messages.addMessage("password dev' essere minore di 30 caratteri");
+            return false;
+        } else if ($('#password1').val().length < 6){
+            messages.addMessage("password deve contenere almeno 6 caratteri");
+            return false;
+        } else {
+            password1 = $('#password1').val();
+            password2 = $('#password2').val();
+
+            //if password is not entered
+            if (password1 == ''){
+                messages.addMessage ("Prego inserisci la password");
+                return false;
+            }
+            //if confirm password is not entered
+            else if (password2 == ''){
+                messages.addMessage ("Prego inserisci la password di conferma");
+                return false;
+            }
+            //if different return false
+            else if (password1 != password2){
+                messages.addMessage ("Le password non combaciano, riprova" + password1 + password2);
+                return false;
+            }
+            //if same return true
+            else if (password1 == password2){
+                return true;
+            }
+        }
+    });
+
     $('.createEvent').submit(function() {
         let now = new Date();
         console.log("ou");
@@ -182,6 +233,14 @@ $(document).ready(function(){
             messages.addMessage("scegliere una categoria");
             return false;
         } else {    //date control missing
+            let address = $("#eventAddress").val().split(',');
+            console.log(address);
+            $(this).append('<input type="hidden" name="via" value="' + address[0] + '">');
+            $(this).append('<input type="hidden" name="civ" value="' + address[1] + '">');
+            $(this).append('<input type="hidden" name="cap" value="' + address[2] + '">');
+            $(this).append('<input type="hidden" name="cit" value="' + address[3] + '">');
+            $(this).append('<input type="hidden" name="stat" value="' + address[4] + '">');
+
             $(this).append('<input type="hidden" name="category" value="' + $(".categoryChoise span.categoryChoisePressed").text().toLowerCase() + '">');
             return true;
         }
@@ -203,11 +262,16 @@ $(document).ready(function(){
     });
 
   $(".info").click(function(){
-      let fontScaling = 1.7;
       $(this).addClass("btnPressed");
+      //console.log($(".article", $(".btnPressed").parent().parent().parent()).attr);
+      let id = $("a", $(".btnPressed")).attr("name");
+
+      console.log($("a", $(".btnPressed")).attr("name"));
+
+      let fontScaling = 1.7;
     $(".infopanel", $(".btnPressed").parent()).slideToggle("fast");
     if($(".info", $(".btnPressed").parent()).text() == "Info"){
-        $(".info", $(".btnPressed").parent()).html("<a href=\"article.php\">Acquista</a>");
+        $(".info", $(".btnPressed").parent()).html("<a href=\"article.php?id=" + id + "\">Acquista</a>");
         let biggerFont = $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size").split('p')[0] * fontScaling;
         $(".bottomleft, .info", $(".btnPressed").parent()).css("font-size", biggerFont + "px").css("transition", "font-size 0.3s");
     }else {

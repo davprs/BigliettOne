@@ -1,10 +1,15 @@
+<?php
+$luogo = $dbh->getAddress($event["luogo"])[0];
+$luogoStr = "https://www.google.com/maps?q=via+".$luogo["via"].",+".$luogo["civico"].",+". $luogo["citta"];
+ ?>
+
 <div class="eventContainer">
-    <div class="createdEvent" id="456">
-        <a href="javascript:void(0)" class="img"><img src="img/concerto.jpg" alt="future"/></a>
-        <div class="title">ROCK CONCERT</div>
-        <div class="price"><p>78$</p></div>
-        <div class="date">01/01/2002</div>
-        <div class="map">Apri mappa</div>
+    <div class="createdEvent" id="<?php echo $event["id_articolo"] ?>">
+        <a href="article.php?id=<?php echo $event["id_articolo"]; ?>" class="img"><img src="<?php echo UPLOAD_DIR.$event["immagine"]; ?>" alt="<?php echo $event["nome"]; ?>"/></a>
+        <div class="title"><?php echo $event["nome"]; ?></div>
+        <div class="price"><p><?php echo $event["prezzo"]; ?>$</p></div>
+        <div class="date"><?php echo $event["data"]; ?></div>
+        <div class="map"><a href="<?php echo $luogoStr; ?>">Apri mappa</a></div>
     </div>
     <hr/>
 </div>

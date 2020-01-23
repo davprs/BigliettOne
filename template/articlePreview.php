@@ -5,8 +5,6 @@ $idCarrello = $dbh->getCartByUsername($_COOKIE["user"])[0];
 $carrello = $dbh->getQuantity($idCarrello["carrello"], $articolo["id_articolo"])[0];
 $phpLessOperation = "oneLess.php?id=".$articolo['id_articolo'];
 ?>
-<p><?php echo $articolo["id_articolo"]; ?></p>
-<p><?php echo $idCarrello["carrello"]; ?></p>
 
 <div class="cartArticle" id="<?php echo $articolo['id_articolo']; ?>">
     <a href="removeFromCart.php?id=<?php echo $articolo['id_articolo']; ?>" class="closebtn">&times;</a>
