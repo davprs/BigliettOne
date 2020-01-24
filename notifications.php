@@ -13,5 +13,5 @@ if(isset($_COOKIE["user"])){
     }
 
 } else {
-    echo "ciao";
+    echo "nulla";
 }
