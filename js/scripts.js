@@ -98,7 +98,6 @@ $(document).ready(function(){
     });
 
     $(".btnminus").on('click',function(){
-        console.log("btn minus pressed");
         $(this).addClass("btnPressed");
         if( ! isDisabled($(".btnPressed")) ){
             $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1);
@@ -110,7 +109,6 @@ $(document).ready(function(){
     });
 
     $(".btnplus").on('click',function(){
-        console.log("btn plus pressed");
         $(this).addClass("btnPressed");
         $(".quantity", $(".btnPressed").parent()).text(parseInt($(".quantity", $(".btnPressed").parent()).text()) + 1);
         $(".price", $(".btnPressed").parent()).text((parseInt($(".price", $(".btnPressed").parent()).text())/(parseInt($(".quantity", $(".btnPressed").parent()).text()) - 1)) * parseInt($(".quantity", $(".btnPressed").parent()).text()) + "$");
@@ -133,7 +131,6 @@ $(document).ready(function(){
         });
 
         if(title == boughtEvents){
-            console.log("miei");
             $("#navbar a:nth-child(1)").addClass("active");
         } else if(title == createdEvents) {
             $("#navbar a:nth-child(2)").addClass("active");
@@ -206,7 +203,6 @@ $(document).ready(function(){
 
     $('.createEvent').submit(function() {
         let now = new Date();
-        console.log("ou");
 
         if($('#eventTitle').val().length > 15){
             messages.addMessage("titolo dev' essere minore di 15 caratteri");
